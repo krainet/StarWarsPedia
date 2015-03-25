@@ -20,6 +20,8 @@
 
 
 -(IBAction)playSound:(id)sender;
+-(IBAction)displayWiki:(id)sender;
+
 
 -(id) initWithModel:(AGTStarWarsCharacter *) model;
 

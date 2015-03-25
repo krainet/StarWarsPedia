@@ -24,6 +24,12 @@
                                 <action selector="playSound:" destination="-1" id="o42-0J-yJp"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="RFD-lO-KCa"/>
+                        <barButtonItem title="WIKI" id="9NX-DG-SRg">
+                            <connections>
+                                <action selector="displayWiki:" destination="-1" id="46m-8B-k8a"/>
+                            </connections>
+                        </barButtonItem>
                     </items>
                 </toolbar>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="RWS-OC-9R7">

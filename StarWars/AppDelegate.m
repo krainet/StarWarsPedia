@@ -54,8 +54,10 @@
     //Creo un combinador
     //tabbar
     UITabBarController *tabVC = [[UITabBarController alloc]init];
+    UINavigationController *navVC = [[UINavigationController alloc]init];
     
     tabVC.viewControllers = @[charVC,wVC];
+    [navVC pushViewController:charVC animated:NO];
     
     
     
@@ -63,7 +65,7 @@
     //self.window.rootViewController=charVC;
     //self.window.rootViewController=wVC;
     
-    self.window.rootViewController=tabVC;
+    self.window.rootViewController=navVC;
     
     [self.window makeKeyAndVisible];
     return YES;

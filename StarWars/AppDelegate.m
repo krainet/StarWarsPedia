@@ -102,7 +102,18 @@
                                   soundData:yodaSound
                                   photo:yodaImage];
     
-    return @[vader,chewie,yoda];
+    
+    NSURL * c3poURL = [NSURL URLWithString:@"http://es.wikipedia.org/wiki/C-3PO"];
+    NSData * c3poSound = [NSData dataWithContentsOfURL:[b URLForResource:@"c3po" withExtension:@"caf"]];
+    UIImage *c3poImage = [UIImage imageNamed:@"c3po.jpg"];
+    
+    AGTStarWarsCharacter *c3po = [[AGTStarWarsCharacter alloc]
+                                  initWithAlias:@"C3PO"
+                                  url:c3poURL
+                                  soundData:c3poSound
+                                  photo:c3poImage];
+    
+    return @[vader,chewie,yoda,c3po];
     
 }
 

@@ -38,8 +38,7 @@
      [NSURLRequest requestWithURL:self.model.wikiURL]];
 }
 
-
-
+#pragma mark - Inicializador
 -(id) initWithModel:(AGTStarWarsCharacter *) model{
     if(self = [super initWithNibName:nil bundle:nil]) {
         _model=model;
@@ -47,11 +46,31 @@
     return self;
 }
 
+
+
 #pragma mark - Delegate UIViewDelegate
+-(BOOL) webView:(UIWebView *)webView
+shouldStartLoadWithRequest:(NSURLRequest *)request
+ navigationType:(UIWebViewNavigationType)navigationType{
+    
+    if((navigationType==UIWebViewNavigationTypeLinkClicked) ||
+       (navigationType==UIWebViewNavigationTypeFormSubmitted)) {
+        return NO;
+    }else{
+        return YES;
+    }
+    
+}
+
+-(void) webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    //Implementar como ejercicio
+}
+
 -(void) webViewDidFinishLoad:(UIWebView *)webView{
     //paro y oculto activity
     [self.activityView setHidden:YES];
     [self.activityView stopAnimating];
 }
+
 
 @end

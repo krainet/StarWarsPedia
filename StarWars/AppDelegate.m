@@ -24,48 +24,16 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // Override point for customization after application launch.
-    
     self.window.backgroundColor = [UIColor orangeColor];
     
     
-    //Creamos un modelo
-    NSURL * vaderURL = [NSURL URLWithString:@"http://es.wikipedia.org/wiki/Darth_Vader"];
-    NSBundle *b = [NSBundle mainBundle];
-    NSData * vaderSound = [NSData dataWithContentsOfURL:[b URLForResource:@"vader" withExtension:@"caf"]];
-    UIImage *vaderImage = [UIImage imageNamed:@"darthVader.jpg"];
-    
-    AGTStarWarsCharacter *model = [[AGTStarWarsCharacter alloc]
-                                   initWithName:@"Anakin Skywalker"
-                                   alias:@"DarthVader"
-                                   url:vaderURL
-                                   soundData:vaderSound
-                                   photo:vaderImage];
-    
-    
-    
-    //Creamos controlladores
-    AGTCharacterViewController *charVC = [[AGTCharacterViewController alloc]
-                                          initWithModel:model];
-    
-    AGTWikiViewController *wVC = [[AGTWikiViewController alloc]initWithModel:model];
-    
-    
-    
     //Creo un combinador
-    //tabbar
+    //TabBar
     UITabBarController *tabVC = [[UITabBarController alloc]init];
-    UINavigationController *navVC = [[UINavigationController alloc]init];
-    
-    tabVC.viewControllers = @[charVC,wVC];
-    [navVC pushViewController:charVC animated:NO];
-    
-    
+    tabVC.viewControllers = [self arrayOfControllers];
     
     //Asignamos rootView
-    //self.window.rootViewController=charVC;
-    //self.window.rootViewController=wVC;
-    
-    self.window.rootViewController=navVC;
+    self.window.rootViewController=tabVC;
     
     [self.window makeKeyAndVisible];
     return YES;
@@ -92,5 +60,70 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+#pragma mark - Métodos de apoyo 
+-(NSArray *) arrayOfModels{
+
+    NSBundle *b = [NSBundle mainBundle];
+    
+    NSURL * vaderURL = [NSURL URLWithString:@"http://es.wikipedia.org/wiki/Darth_Vader"];
+
+    NSData * vaderSound = [NSData dataWithContentsOfURL:[b URLForResource:@"vader" withExtension:@"caf"]];
+    UIImage *vaderImage = [UIImage imageNamed:@"darthVader.jpg"];
+    
+    AGTStarWarsCharacter *vader = [[AGTStarWarsCharacter alloc]
+                                   initWithName:@"Anakin Skywalker"
+                                   alias:@"DarthVader"
+                                   url:vaderURL
+                                   soundData:vaderSound
+                                   photo:vaderImage];
+    
+    
+    NSURL * chewieURL = [NSURL URLWithString:@"http://es.wikipedia.org/wiki/Chewbacca"];
+    NSData * chewieSound = [NSData dataWithContentsOfURL:[b URLForResource:@"chewbacca" withExtension:@"caf"]];
+    UIImage *chewieImage = [UIImage imageNamed:@"chewbacca.jpg"];
+    
+    AGTStarWarsCharacter *chewie = [[AGTStarWarsCharacter alloc]
+                                   initWithAlias:@"Chewbacca"
+                                   url:chewieURL
+                                   soundData:chewieSound
+                                   photo:chewieImage];
+
+    
+    NSURL * yodaURL = [NSURL URLWithString:@"http://es.wikipedia.org/wiki/Yoda"];
+    NSData * yodaSound = [NSData dataWithContentsOfURL:[b URLForResource:@"yoda" withExtension:@"caf"]];
+    UIImage *yodaImage = [UIImage imageNamed:@"yoda.jpg"];
+    
+    AGTStarWarsCharacter *yoda = [[AGTStarWarsCharacter alloc]
+                                  initWithName:@"Minch Yoda"
+                                  alias:@"Master Yoda"
+                                  url:yodaURL
+                                  soundData:yodaSound
+                                  photo:yodaImage];
+    
+    return @[vader,chewie,yoda];
+    
+}
+
+-(NSArray *) arrayOfControllers{
+    
+    NSArray *models = [self arrayOfModels];
+    NSMutableArray *controllers = [NSMutableArray arrayWithCapacity:models.count];
+    
+    //Recorremos array de modelos
+    for(AGTStarWarsCharacter *each in models) {
+        
+        //Creo controller por cada uno
+        AGTCharacterViewController *charVC = [[AGTCharacterViewController alloc]initWithModel:each];
+        //Meto en navigation
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:charVC];
+        //Agrego en array de controllers
+        [controllers addObject:nav];
+    }
+    return controllers;
+}
+
+
 
 @end

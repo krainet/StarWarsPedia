@@ -15,6 +15,7 @@
 -(id) initWithModel:(AGTStarWarsCharacter *) model{
     if(self = [super initWithNibName:nil bundle:nil]) {
         _model = model;
+        self.title = [model alias];
     }
     return self;
 }
@@ -22,6 +23,9 @@
 #pragma mark - Lifecycle Controller
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    //Asegurarse de que no se ocupa toda la pantalla cuando estas en convinador
+    self.edgesForExtendedLayout=UIRectEdgeNone;
     
     //Syncronizamos modelo -> vista
     self.photoView.image=self.model.photo;

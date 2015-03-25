@@ -43,15 +43,27 @@
     
     
     
-    //Creamos un controller
+    //Creamos controlladores
     AGTCharacterViewController *charVC = [[AGTCharacterViewController alloc]
                                           initWithModel:model];
     
-    AGTWikiViewController *wikiVC = [[AGTWikiViewController alloc]initWithModel:model];
+    AGTWikiViewController *wVC = [[AGTWikiViewController alloc]initWithModel:model];
+    
+    
+    
+    //Creo un combinador
+    //tabbar
+    UITabBarController *tabVC = [[UITabBarController alloc]init];
+    
+    tabVC.viewControllers = @[charVC,wVC];
+    
+    
     
     //Asignamos rootView
     //self.window.rootViewController=charVC;
-    self.window.rootViewController=wikiVC;
+    //self.window.rootViewController=wVC;
+    
+    self.window.rootViewController=tabVC;
     
     [self.window makeKeyAndVisible];
     return YES;

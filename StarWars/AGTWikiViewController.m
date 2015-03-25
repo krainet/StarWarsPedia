@@ -30,6 +30,9 @@
     //Asignamos delegados
     self.browser.delegate=self;
     
+    //Asegurarse de que no se ocupa toda la pantalla cuando estas en convinador
+    self.edgesForExtendedLayout=UIRectEdgeNone;    
+    
     //sinc modelo - vista
     [self.activityView setHidesWhenStopped:NO];
     [self.activityView startAnimating];
@@ -42,6 +45,7 @@
 -(id) initWithModel:(AGTStarWarsCharacter *) model{
     if(self = [super initWithNibName:nil bundle:nil]) {
         _model=model;
+        self.title=@"Wikipedia";
     }
     return self;
 }

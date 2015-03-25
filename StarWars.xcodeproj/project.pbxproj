@@ -32,6 +32,8 @@
 		1E40AEDC1AC2284100D3E426 /* yoda.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1E40AECC1AC2284100D3E426 /* yoda.caf */; };
 		1E40AEDD1AC2284100D3E426 /* yoda.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1E40AECD1AC2284100D3E426 /* yoda.jpg */; };
 		1E7248AF1AC346FC00B51488 /* CafPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7248AE1AC346FC00B51488 /* CafPlayer.m */; };
+		1E8DAC1A1AC34E5C00C9BB90 /* AGTWikiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8DAC181AC34E5C00C9BB90 /* AGTWikiViewController.m */; };
+		1E8DAC1B1AC34E5C00C9BB90 /* AGTWikiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E8DAC191AC34E5C00C9BB90 /* AGTWikiViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,9 @@
 		1E40AECD1AC2284100D3E426 /* yoda.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yoda.jpg; sourceTree = "<group>"; };
 		1E7248AD1AC346FC00B51488 /* CafPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CafPlayer.h; sourceTree = "<group>"; };
 		1E7248AE1AC346FC00B51488 /* CafPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CafPlayer.m; sourceTree = "<group>"; };
+		1E8DAC171AC34E5C00C9BB90 /* AGTWikiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGTWikiViewController.h; sourceTree = "<group>"; };
+		1E8DAC181AC34E5C00C9BB90 /* AGTWikiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGTWikiViewController.m; sourceTree = "<group>"; };
+		1E8DAC191AC34E5C00C9BB90 /* AGTWikiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AGTWikiViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +178,9 @@
 				1E40AEB81AC21A5F00D3E426 /* AGTCharacterViewController.h */,
 				1E40AEB91AC21A5F00D3E426 /* AGTCharacterViewController.m */,
 				1E40AEBA1AC21A5F00D3E426 /* AGTCharacterViewController.xib */,
+				1E8DAC171AC34E5C00C9BB90 /* AGTWikiViewController.h */,
+				1E8DAC181AC34E5C00C9BB90 /* AGTWikiViewController.m */,
+				1E8DAC191AC34E5C00C9BB90 /* AGTWikiViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -295,6 +303,7 @@
 				1E40AEDA1AC2284100D3E426 /* tarkin.jpg in Resources */,
 				1E40AE9F1AC2040500D3E426 /* LaunchScreen.xib in Resources */,
 				1E40AED61AC2284100D3E426 /* palpatine.jpg in Resources */,
+				1E8DAC1B1AC34E5C00C9BB90 /* AGTWikiViewController.xib in Resources */,
 				1E40AED91AC2284100D3E426 /* tarkin.caf in Resources */,
 				1E40AECF1AC2284100D3E426 /* c3po.jpg in Resources */,
 				1E40AEDD1AC2284100D3E426 /* yoda.jpg in Resources */,
@@ -329,6 +338,7 @@
 				1E40AE9A1AC2040500D3E426 /* AppDelegate.m in Sources */,
 				1E40AEB61AC215D100D3E426 /* AGTStarWarsCharacter.m in Sources */,
 				1E7248AF1AC346FC00B51488 /* CafPlayer.m in Sources */,
+				1E8DAC1A1AC34E5C00C9BB90 /* AGTWikiViewController.m in Sources */,
 				1E40AE971AC2040500D3E426 /* main.m in Sources */,
 				1E40AEBB1AC21A5F00D3E426 /* AGTCharacterViewController.m in Sources */,
 			);

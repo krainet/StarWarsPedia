@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "AGTStarWarsCharacter.h"
 #import "AGTCharacterViewController.h"
+#import "AGTWikiViewController.h"
 
 @interface AppDelegate ()
 
@@ -46,9 +47,11 @@
     AGTCharacterViewController *charVC = [[AGTCharacterViewController alloc]
                                           initWithModel:model];
     
+    AGTWikiViewController *wikiVC = [[AGTWikiViewController alloc]initWithModel:model];
     
     //Asignamos rootView
-    self.window.rootViewController=charVC;
+    //self.window.rootViewController=charVC;
+    self.window.rootViewController=wikiVC;
     
     [self.window makeKeyAndVisible];
     return YES;

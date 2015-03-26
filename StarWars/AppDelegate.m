@@ -48,6 +48,7 @@
     UISplitViewController *splitVC = [[UISplitViewController alloc]init];
     splitVC.viewControllers=@[uNav,cNav];
     splitVC.delegate=cVC;
+    uVC.delegate=cVC;
                               
     //Asignamos rootView
     self.window.rootViewController=splitVC;

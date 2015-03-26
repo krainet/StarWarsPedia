@@ -29,7 +29,8 @@
     self.edgesForExtendedLayout=UIRectEdgeNone;
     
     //Syncronizamos modelo -> vista
-    self.photoView.image=self.model.photo;
+    [self syncViewWithModel];
+    //refactorizo :: self.photoView.image=self.model.photo;
 }
 
 
@@ -78,5 +79,23 @@
 }
 
 
+#pragma mark - AGTUniverseTableViewControllerDelegate
+//Tambien es delegado del tableViewController (pringado)
+
+-(void)universeTableViewController:(AGTUniverseTableViewController *)uVC
+                didSelectCharacter:(AGTStarWarsCharacter *)character{
+    
+    //Actualizo el modelo
+    self.model=character;
+    
+    //Sincronizo modelo y vista
+    [self syncViewWithModel];
+    
+}
+
+-(void) syncViewWithModel{
+    self.title=self.model.alias;
+    self.photoView.image=self.model.photo;
+}
 
 @end

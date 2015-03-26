@@ -10,9 +10,10 @@
 
 @import UIKit;
 #import "AGTStarWarsCharacter.h"
+#import "AGTUniverseTableViewController.h"
 #import "CafPlayer.h"
 
-@interface AGTCharacterViewController : UIViewController<UISplitViewControllerDelegate>
+@interface AGTCharacterViewController : UIViewController<UISplitViewControllerDelegate,AGTUniverseTableViewControllerDelegate>
 
 @property (nonatomic,strong) AGTStarWarsCharacter *model;
 @property (weak,nonatomic) IBOutlet UIImageView *photoView;

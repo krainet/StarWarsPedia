@@ -31,11 +31,17 @@
         NSBundle *b = [NSBundle mainBundle];
         
         NSURL * vaderURL = [NSURL URLWithString:@"http://es.wikipedia.org/wiki/Darth_Vader"];
-        
         NSData * vaderSound = [NSData dataWithContentsOfURL:[b URLForResource:@"vader" withExtension:@"caf"]];
         UIImage *vaderImage = [UIImage imageNamed:@"darthVader.jpg"];
         
         AGTStarWarsCharacter *vader = [[AGTStarWarsCharacter alloc]
+                                       initWithName:@"Anakin Skywalker"
+                                       alias:@"DarthVader"
+                                       url:vaderURL
+                                       soundData:vaderSound
+                                       photo:vaderImage];
+
+        AGTStarWarsCharacter *vader2 = [[AGTStarWarsCharacter alloc]
                                        initWithName:@"Anakin Skywalker"
                                        alias:@"DarthVader"
                                        url:vaderURL
@@ -76,7 +82,7 @@
                                       soundData:c3poSound
                                       photo:c3poImage];
         
-        self.imperials = @[vader];
+        self.imperials = @[vader,vader2];
         self.rebels = @[c3po,yoda,chewie];
         
     }
@@ -90,7 +96,7 @@
     return [self.rebels count];
 }
 
--(NSUInteger) imperialsCount{
+-(NSUInteger) imperialCount{
     return [self.imperials count];
 }
 

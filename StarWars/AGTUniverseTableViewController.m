@@ -57,7 +57,7 @@
 
 -(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     if(section==IMPERIAL_SECTION) {
-        return @"Imperiales";
+        return @"Imperials";
     } else {
         return @"Rebels";
     }

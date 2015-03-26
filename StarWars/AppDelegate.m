@@ -33,15 +33,24 @@
     AGTStarWarsUniverse *universe = [AGTStarWarsUniverse new];
     
     
-    //Creamos Controlador
+    //Creamos los Controladores
     AGTUniverseTableViewController *uVC = [[AGTUniverseTableViewController alloc]initWithModel:universe style:UITableViewStylePlain];
+    AGTCharacterViewController *cVC = [[AGTCharacterViewController alloc]initWithModel:[universe rebelAtIndex:0]];
     
-    //Creamos combinador
-    UINavigationController *nav = [UINavigationController new];
-    [nav pushViewController:uVC animated:NO];
+    //Creamos los nav controllers
+    UINavigationController *uNav = [UINavigationController new];
+    [uNav pushViewController:uVC animated:NO];
     
+    UINavigationController *cNav = [UINavigationController new];
+    [cNav pushViewController:cVC animated:NO];
+    
+    
+    UISplitViewController *splitVC = [[UISplitViewController alloc]init];
+    splitVC.viewControllers=@[uNav,cNav];
+    splitVC.delegate=cVC;
+                              
     //Asignamos rootView
-    self.window.rootViewController=nav;
+    self.window.rootViewController=splitVC;
     
     [self.window makeKeyAndVisible];
     return YES;

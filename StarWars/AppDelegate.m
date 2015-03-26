@@ -11,6 +11,7 @@
 #import "AGTCharacterViewController.h"
 #import "AGTWikiViewController.h"
 #import "AGTStarWarsUniverse.h"
+#import "AGTUniverseTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -33,18 +34,14 @@
     
     
     //Creamos Controlador
+    AGTUniverseTableViewController *uVC = [[AGTUniverseTableViewController alloc]initWithModel:universe style:UITableViewStylePlain];
     
-    
-    //Creamos controlador
-    
-    
-    
-    //Creo un combinador - TabBar
-    UITabBarController *tabVC = [[UITabBarController alloc]init];
-    //tabVC.viewControllers = [self arrayOfControllers];
+    //Creamos combinador
+    UINavigationController *nav = [UINavigationController new];
+    [nav pushViewController:uVC animated:NO];
     
     //Asignamos rootView
-    self.window.rootViewController=tabVC;
+    self.window.rootViewController=nav;
     
     [self.window makeKeyAndVisible];
     return YES;

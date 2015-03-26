@@ -7,6 +7,7 @@
 //
 
 #import "AGTUniverseTableViewController.h"
+#import "AGTCharacterViewController.h"
 
 @interface AGTUniverseTableViewController ()
 
@@ -54,11 +55,16 @@
     }
 }
 
+-(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if(section==IMPERIAL_SECTION) {
+        return @"Imperiales";
+    } else {
+        return @"Rebels";
+    }
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    // Configure the cell...
     
     //Averiguar de que modelo estamos hablando (modelo = personaje)
     AGTStarWarsCharacter *character = nil;
@@ -89,6 +95,26 @@
     return cell;
 }
 
+
+
+#pragma mark - Delegate
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    //Averiguar que modelo (personaje) me esta hablando
+    
+    //DEBERES:: -(AGTStarWarsCharacter *) CharacterAtIndexPath:(NSIndexPath*);
+    
+    AGTStarWarsCharacter *character;
+    if(indexPath.section == IMPERIAL_SECTION) {
+        character = [self.model imperialAtIndex:indexPath.row];
+    } else {
+        character = [self.model rebelAtIndex:indexPath.row];
+    }
+    
+    // Crear un controller con el caracter
+    AGTCharacterViewController *charVC = [[AGTCharacterViewController alloc]initWithModel:character];
+    [self.navigationController pushViewController:charVC animated:YES];
+}
 
 /*
 // Override to support conditional editing of the table view.

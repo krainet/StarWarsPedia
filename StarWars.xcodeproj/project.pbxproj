@@ -35,6 +35,7 @@
 		1E8DAC1A1AC34E5C00C9BB90 /* AGTWikiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8DAC181AC34E5C00C9BB90 /* AGTWikiViewController.m */; };
 		1E8DAC1B1AC34E5C00C9BB90 /* AGTWikiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E8DAC191AC34E5C00C9BB90 /* AGTWikiViewController.xib */; };
 		1E8DAC1E1AC376B800C9BB90 /* AGTStarWarsUniverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8DAC1D1AC376B800C9BB90 /* AGTStarWarsUniverse.m */; };
+		1EA826301AC4996800E72879 /* AGTUniverseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA8262F1AC4996800E72879 /* AGTUniverseTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,8 @@
 		1E8DAC191AC34E5C00C9BB90 /* AGTWikiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AGTWikiViewController.xib; sourceTree = "<group>"; };
 		1E8DAC1C1AC376B800C9BB90 /* AGTStarWarsUniverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGTStarWarsUniverse.h; sourceTree = "<group>"; };
 		1E8DAC1D1AC376B800C9BB90 /* AGTStarWarsUniverse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGTStarWarsUniverse.m; sourceTree = "<group>"; };
+		1EA8262E1AC4996800E72879 /* AGTUniverseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGTUniverseTableViewController.h; sourceTree = "<group>"; };
+		1EA8262F1AC4996800E72879 /* AGTUniverseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGTUniverseTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +189,8 @@
 				1E8DAC171AC34E5C00C9BB90 /* AGTWikiViewController.h */,
 				1E8DAC181AC34E5C00C9BB90 /* AGTWikiViewController.m */,
 				1E8DAC191AC34E5C00C9BB90 /* AGTWikiViewController.xib */,
+				1EA8262E1AC4996800E72879 /* AGTUniverseTableViewController.h */,
+				1EA8262F1AC4996800E72879 /* AGTUniverseTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -346,6 +351,7 @@
 				1E7248AF1AC346FC00B51488 /* CafPlayer.m in Sources */,
 				1E8DAC1A1AC34E5C00C9BB90 /* AGTWikiViewController.m in Sources */,
 				1E40AE971AC2040500D3E426 /* main.m in Sources */,
+				1EA826301AC4996800E72879 /* AGTUniverseTableViewController.m in Sources */,
 				1E40AEBB1AC21A5F00D3E426 /* AGTCharacterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

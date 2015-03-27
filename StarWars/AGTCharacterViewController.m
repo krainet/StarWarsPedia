@@ -31,6 +31,9 @@
     //Syncronizamos modelo -> vista
     [self syncViewWithModel];
     //refactorizo :: self.photoView.image=self.model.photo;
+    
+    //BUG boton al aparecer - si estoy dentro de un splitvc pongo boton
+    self.navigationItem.leftBarButtonItem=self.splitViewController.displayModeButtonItem;
 }
 
 

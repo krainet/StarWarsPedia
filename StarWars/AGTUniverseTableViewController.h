@@ -9,6 +9,10 @@
 #define IMPERIAL_SECTION 0
 #define REBEL_SECTION 1
 
+#define CHARACTER_DID_CHANGE_NOTIFICATION_NAME @"characterDidChangeNotification"
+#define CHARACTER_KEY @"characterKey"
+
+
 #import <UIKit/UIKit.h>
 #import "AGTStarWarsUniverse.h"
 #import "AGTStarWarsCharacter.h"
@@ -24,7 +28,7 @@
 
 @end
 
-@interface AGTUniverseTableViewController : UITableViewController
+@interface AGTUniverseTableViewController : UITableViewController<AGTUniverseTableViewControllerDelegate>
 
 @property (strong,nonatomic) AGTStarWarsUniverse *model;
 @property (weak,nonatomic) id<AGTUniverseTableViewControllerDelegate>delegate;

@@ -26,32 +26,23 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor orangeColor];
+    //self.window.backgroundColor = [UIColor orangeColor];
     
     
     //Creamos Modelo
     AGTStarWarsUniverse *universe = [AGTStarWarsUniverse new];
     
-    
-    //Creamos los Controladores
-    AGTUniverseTableViewController *uVC = [[AGTUniverseTableViewController alloc]initWithModel:universe style:UITableViewStylePlain];
-    AGTCharacterViewController *cVC = [[AGTCharacterViewController alloc]initWithModel:[universe rebelAtIndex:0]];
-    
-    //Creamos los nav controllers
-    UINavigationController *uNav = [UINavigationController new];
-    [uNav pushViewController:uVC animated:NO];
-    
-    UINavigationController *cNav = [UINavigationController new];
-    [cNav pushViewController:cVC animated:NO];
+    //Detectar tipo de pantall
+    if([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPad){
+        //tipo tableta
+        [self configureForPadWithModel:universe];
+    }else{
+        //tipo telefono
+        [self configureForPhoneWithModel:universe];
+    }
     
     
-    UISplitViewController *splitVC = [[UISplitViewController alloc]init];
-    splitVC.viewControllers=@[uNav,cNav];
-    splitVC.delegate=cVC;
-    uVC.delegate=cVC;
-                              
-    //Asignamos rootView
-    self.window.rootViewController=splitVC;
+    
     
     [self.window makeKeyAndVisible];
     return YES;
@@ -79,7 +70,48 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+#pragma mark - Utils
+-(void) configureForPadWithModel:(AGTStarWarsUniverse*)universe{
+    //Creamos los Controladores
+    AGTUniverseTableViewController *uVC = [[AGTUniverseTableViewController alloc]initWithModel:universe style:UITableViewStylePlain];
+    AGTCharacterViewController *cVC = [[AGTCharacterViewController alloc]initWithModel:[universe rebelAtIndex:0]];
+    
+    //Creamos los nav controllers
+    UINavigationController *uNav = [UINavigationController new];
+    [uNav pushViewController:uVC animated:NO];
+    
+    UINavigationController *cNav = [UINavigationController new];
+    [cNav pushViewController:cVC animated:NO];
+    
+    
+    UISplitViewController *splitVC = [[UISplitViewController alloc]init];
+    splitVC.viewControllers=@[uNav,cNav];
+    splitVC.delegate=cVC;
+    uVC.delegate=cVC;
+    
+    //Asignamos rootView
+    self.window.rootViewController=splitVC;
+}
 
+-(void) configureForPhoneWithModel:(AGTStarWarsUniverse*)universe{
+    
+    
+    //Creamos controlador
+    AGTUniverseTableViewController *uVC=[[AGTUniverseTableViewController alloc]initWithModel:universe style:UITableViewStylePlain];
+    
+    //Creamos convinador
+    UINavigationController *navVC = [UINavigationController new];
+    [navVC pushViewController:uVC animated:NO];
+    
+    //Asginamos delegados - el delegado somos NOSOTROS MISMOS!
+    uVC.delegate=uVC;
+    
+    
+    //Lo hacemos root
+    self.window.rootViewController=navVC;
+    
+    
+}
 
 
 

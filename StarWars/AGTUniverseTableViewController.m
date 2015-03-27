@@ -118,8 +118,21 @@
     }
     
     //mandar la notificacion
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter]; // es singletone
+    NSDictionary *dict=@{CHARACTER_KEY:character};
+    NSNotification *n = [NSNotification notificationWithName:CHARACTER_DID_CHANGE_NOTIFICATION_NAME object:self userInfo:dict];
+    [nc postNotification:n];
+}
+
+#pragma mark - Autodelegado 
+//Para dar soporte a iPhone
+-(void) universeTableViewController:(AGTUniverseTableViewController *)uVC didSelectCharacter:(AGTStarWarsCharacter *)character{
     
+    //creamos un charactervc
+    AGTCharacterViewController *charVC =[[AGTCharacterViewController alloc]initWithModel:character];
     
+    //hago push
+    [self.navigationController pushViewController:charVC animated:YES];
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "AGTWikiViewController.h"
+#import "AGTUniverseTableViewController.h"
 
 @interface AGTWikiViewController ()
 
@@ -26,6 +27,13 @@
 
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+
+    //alta notif
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self
+           selector:@selector(notifyThatCharacterDidChange:)
+               name:CHARACTER_DID_CHANGE_NOTIFICATION_NAME
+             object:nil];
     
     //Asignamos delegados
     self.browser.delegate=self;
@@ -39,6 +47,14 @@
     
     [self.browser loadRequest:
      [NSURLRequest requestWithURL:self.model.wikiURL]];
+
+}
+
+-(void) viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+    //baja notif
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Inicializador
@@ -76,5 +92,29 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
     [self.activityView stopAnimating];
 }
 
+#pragma mark - Notifications
+// CHARACTER_DID_CHANGE_NOTIFICATION_NAME
+-(void)notifyThatCharacterDidChange:(NSNotification*) notification{
+    //sacamos personaje
+    AGTStarWarsCharacter *character = [notification.userInfo objectForKey:CHARACTER_KEY];
+    
+    //actualizamos el modelo
+    self.model=character;
+    
+    //sync vista
+    [self syncWithModel];
+    
+}
+
+#pragma mark - Utils
+-(void) syncWithModel{
+    
+    //sinc modelo - vista
+    [self.activityView setHidesWhenStopped:NO];
+    [self.activityView startAnimating];
+    
+    [self.browser loadRequest:
+     [NSURLRequest requestWithURL:self.model.wikiURL]];
+}
 
 @end

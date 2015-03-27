@@ -82,7 +82,18 @@
                                       soundData:c3poSound
                                       photo:c3poImage];
         
-        self.imperials = @[vader,vader2];
+        NSURL * palpatineURL = [NSURL URLWithString:@"http://es.wikipedia.org/wiki/palpatine"];
+        NSData * palpatineSound = [NSData dataWithContentsOfURL:[b URLForResource:@"palpatine" withExtension:@"caf"]];
+        UIImage *palpatineImage = [UIImage imageNamed:@"palpatine.jpg"];
+        
+        AGTStarWarsCharacter *palpatine = [[AGTStarWarsCharacter alloc]
+                                      initWithAlias:@"Palpatine"
+                                      url:palpatineURL
+                                      soundData:palpatineSound
+                                      photo:palpatineImage];
+        
+        
+        self.imperials = @[vader,palpatine,vader2];
         self.rebels = @[c3po,yoda,chewie];
         
     }

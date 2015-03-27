@@ -8,6 +8,7 @@
 
 #import "AGTUniverseTableViewController.h"
 #import "AGTCharacterViewController.h"
+#import "Settings.h"
 
 @interface AGTUniverseTableViewController ()
 
@@ -122,6 +123,13 @@
     NSDictionary *dict=@{CHARACTER_KEY:character};
     NSNotification *n = [NSNotification notificationWithName:CHARACTER_DID_CHANGE_NOTIFICATION_NAME object:self userInfo:dict];
     [nc postNotification:n];
+    
+    //Guardamos posicion
+    NSArray *coords = @[@(indexPath.section),@(indexPath.row)];
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    [def setObject:coords forKey:LAST_SELECTED_CHARACTER];
+    [def synchronize];
+    
 }
 
 #pragma mark - Autodelegado 

@@ -87,6 +87,7 @@
 		1E8DAC191AC34E5C00C9BB90 /* AGTWikiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AGTWikiViewController.xib; sourceTree = "<group>"; };
 		1E8DAC1C1AC376B800C9BB90 /* AGTStarWarsUniverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGTStarWarsUniverse.h; sourceTree = "<group>"; };
 		1E8DAC1D1AC376B800C9BB90 /* AGTStarWarsUniverse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGTStarWarsUniverse.m; sourceTree = "<group>"; };
+		1EA3F7F91AC60E5B00A58BE0 /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		1EA8262E1AC4996800E72879 /* AGTUniverseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGTUniverseTableViewController.h; sourceTree = "<group>"; };
 		1EA8262F1AC4996800E72879 /* AGTUniverseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGTUniverseTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +140,7 @@
 				1E40AE941AC2040500D3E426 /* Supporting Files */,
 				1E40AEB71AC215D800D3E426 /* Models */,
 				1E40AEBD1AC21A6400D3E426 /* Controllers */,
+				1EA3F7F91AC60E5B00A58BE0 /* Settings.h */,
 			);
 			path = StarWars;
 			sourceTree = "<group>";

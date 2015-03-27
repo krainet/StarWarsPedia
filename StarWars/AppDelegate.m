@@ -12,6 +12,8 @@
 #import "AGTWikiViewController.h"
 #import "AGTStarWarsUniverse.h"
 #import "AGTUniverseTableViewController.h"
+#import "Settings.h"
+
 
 @interface AppDelegate ()
 
@@ -21,6 +23,17 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    //Valor por defecto para último personaje seleccionado
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    if(![def objectForKey:LAST_SELECTED_CHARACTER]){
+        // guardamos un valor por defecto (ojo al empaquetado de los nsnumber dentro de un array (que no puede guardar mas que objetos)
+        [def setObject:@[@(IMPERIAL_SECTION),@0]
+                forKey:LAST_SELECTED_CHARACTER];
+        
+        //Por si acaso ... guardamos
+        [def synchronize];
+    }
     
     //Defino mi pantalla.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -74,7 +87,10 @@
 -(void) configureForPadWithModel:(AGTStarWarsUniverse*)universe{
     //Creamos los Controladores
     AGTUniverseTableViewController *uVC = [[AGTUniverseTableViewController alloc]initWithModel:universe style:UITableViewStylePlain];
-    AGTCharacterViewController *cVC = [[AGTCharacterViewController alloc]initWithModel:[universe rebelAtIndex:0]];
+    
+    //AGTCharacterViewController *cVC = [[AGTCharacterViewController alloc]initWithModel:[universe rebelAtIndex:0]];
+    //lastSelectedCharacterInModel
+    AGTCharacterViewController *cVC = [[AGTCharacterViewController alloc]initWithModel:[self lastSelectedCharacterInModel:universe]];
     
     //Creamos los nav controllers
     UINavigationController *uNav = [UINavigationController new];
@@ -113,6 +129,28 @@
     
 }
 
+-(AGTStarWarsCharacter*) lastSelectedCharacterInModel:(AGTStarWarsUniverse*)u{
+    //obtengo el NSUserDefaults
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    
+    //Saco coords del ultimo personaje
+    NSArray *coords=[def objectForKey:LAST_SELECTED_CHARACTER];
+    NSUInteger section = [[coords objectAtIndex:0] integerValue];
+    NSUInteger row = [[coords objectAtIndex:1]integerValue];
+    
+    //Obtengo el personaje
+    AGTStarWarsCharacter *character;
+    if(section==IMPERIAL_SECTION){
+        //TAL CHAR
+        character = [u imperialAtIndex:row];
+    } else {
+        //TAL OTRO
+        character = [u rebelAtIndex:row];
+    }
+    
+    //Lo devuelvo
+    return character;
+}
 
 
 
